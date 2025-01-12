@@ -1,0 +1,15 @@
+---
+- name: Install Apache on the Agent Node
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start httpd
+      Service:
+        name: httpd
+        state: started
+        enabled: yes
